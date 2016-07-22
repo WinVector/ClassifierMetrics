@@ -23,7 +23,7 @@ That being said it always seems like there is a bit of [gamesmanship](https://en
 yet another score, often apparently in the hope you may not have heard of it.  Some choice of measure
 is signaling your pedigree (precision/recall implies a data mining background, sensitivity/specificity a medical science background) and hoping to befuddle others.
 
-![Stanley Wyatt illustration from "Mathmanship" Nicholas Vanserg, 1958, collected in *A Stress Analysis of a Strapless evening Gown*, Robert A. Baker, Prentice-Hall, 1963](Mathmanship.png)
+![Stanley Wyatt illustration from "Mathmanship" Nicholas Vanserg, 1958, collected in *A Stress Analysis of a Strapless Evening Gown*, Robert A. Baker, Prentice-Hall, 1963](Mathmanship.png)
 
 The rest of this note is some help
 in dealing with this menagerie of common competing classifier evaluation scores.
@@ -146,9 +146,9 @@ sub(parse(text=expr),
 
 ### Balanced Accuracy
 
-We can denote the probability of a true (in-class) instances scoring higher 
+If we write the probability of a true (in-class) instances scoring higher 
 than a false (not in class) instance (with 1/2 point for ties) as
-`Prob[score(true)>score(false)] (with half point on ties)`.  We can confirm
+`Prob[score(true)>score(false)] (with half point on ties)`.  We can then confirm
 `Prob[score(true)>score(false)] (with half point on ties) == BalancedAccuracy` for hard or decision classifiers by defining `score(true)>score(false)` as:
 
     A D : True Positive and True Negative: Correct sorting 1 point
@@ -156,7 +156,7 @@ than a false (not in class) instance (with 1/2 point for ties) as
     C D : False Negative and True Negative (same prediction "Negative", different outcomes): 1/2 point
     C B : False Negative and True Negative: Wrong order 0 points
     
-Then `ScoreTrueGTFalse == `Prob[score(true)>score(false)]` is:
+Then `ScoreTrueGTFalse == `Prob[score(true)>score(false)] (with 1/2 point for ties)` is:
    
 ```{r balancedaccuracy}
 ScoreTrueGTFalse = (1*A*D  + 0.5*A*B + 0.5*C*D + 0*C*B)/((A+C)*(B+D))
