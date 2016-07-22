@@ -152,7 +152,7 @@ $(document).ready(function () {
 <li>The False Negative count, this is the number of items in the true class the that classifier declares to be negative.</li>
 </ul>
 <p>Notice true and false are being used to indicate if the classifier is correct (and not the actual category of each item) in these terms. This is traditional nomenclature. The first two quantities are where the classifier is correct (positive corresponding to true and negative corresponding to false) and the second two quantities count instances where the classifier is incorrect.</p>
-<p>It is traditional to arrange these quantities into a 2 by 2 table called the confusion matrix. If we define</p>
+<p>It is traditional to arrange these quantities into a 2 by 2 table called the confusion matrix. If we define:</p>
 <pre class="r"><code>library('ggplot2')
 library('caret')</code></pre>
 <pre><code>## Loading required package: lattice</code></pre>
@@ -164,6 +164,7 @@ library('caret')</code></pre>
 B = Var('FalsePositives')
 C = Var('FalseNegatives')
 D = Var('TrueNegatives')</code></pre>
+<p>(Note all code shared <a href="https://github.com/WinVector/ClassifierMetrics">here</a>.)</p>
 <p>Then the <a href="http://topepo.github.io/caret/index.html">caret</a> <a href="https://cran.r-project.org">R package</a> defines the confusion matrix as follows (see <code>help(&quot;confusionMatrix&quot;)</code>) as follows:</p>
 <pre><code>          Reference 
 Predicted   Event   No Event
